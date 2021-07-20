@@ -1,13 +1,115 @@
 // GLOBAL CSS ... 
 
+$black : #2a2929;
+$red : #dc143c;
+$white : #f5f3f3;
+$blue : #20467c;
+$green : #92ff26;
+
 // extension wrapper
 // injected with react app ==> /src/index.js
 #jk--chrome--extension {
     position: fixed;
     z-index: 2147483647; // top o' the mountain
 }
+@font-face {
+    font-family: 'redacted_regular';
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/redacted-regular.woff') format('woff'), 
+         url('chrome-extension://__MSG_@@extension_id__/fonts/redacted-regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'redacted_scriptbold';
+    src: url('chrome-extension://__MSG_@@extension_id__/fonts/redacted-script-bold.woff') format('woff'), 
+         url('chrome-extension://__MSG_@@extension_id__/fonts/redacted-script-bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
 
 // you can inject whatever CSS you want into the page
-// body { background: crimson; }
+// body { background: crimson !important; }
 
+body.mocker-me.wireframe, 
+body.mocker-me.custom-wireframe .mocker-me-custom,
+body.mocker-me.wireframe .mocker-me-custom  {
+    font-family: "redacted_scriptbold" !important;
+    h1, h2, h3, h4, h5, h6, li, li div, span, a, p, p a, p span, strong, em {
+        font-family: "redacted_scriptbold" !important;
+    }
+}
+body.mocker-me.blur, 
+body.mocker-me.custom-blur .mocker-me-custom,
+body.mocker-me.blur .mocker-me-custom  {
+    font-family: "redacted_regular" !important;
+    h1, h2, h3, h4, h5, h6, li, li div, span, a, p, p a, p span, strong, em {
+        font-family: "redacted_regular" !important;
+    }
+}
+/*
+body.mocker-me.blur, body.mocker-me.custom-blur .mocker-me-custom {
+    h1, h2, h3, h4, h5, h6, a, p, p a, strong {
+        filter: blur(4px) !important;
+        backdrop-filter: blur(4px) !important;
+    }
+}
+*/
+body.mocker-me.custom-blur, 
+body.mocker-me.custom-wireframe, 
+body.mocker-me.custom-blur:not(.mocker-me-paused),
+body.mocker-me.custom-wireframe:not(.mocker-me-paused) {
+    .mocker-me-hover {
+        background-color: rgba(yellow, 0.65);
+        transition: all 260ms ease-in-out;
+    }
+    .mocker-me-custom.mocker-me-hover {
+        background-color: rgba(pink, 0.65);
+    }
+}
+body.mocker-me-paused {
+    pointer-events: none;
+    *.mocker-me-hover, .mocker-me-hover {
+        background-color: none !important;
+    }
+}
+body#mocker-me-tab {
+    box-sizing: border-box;
+    *, *:before, *:after {
+        box-sizing: border-box;
+    }
+    main {
+        max-width: 800px;
+        margin: 44px auto;
+    }
+    h1 {
+        color: $black;
+        font-weight: normal;
+    }
+    #screenshots {
+        .screenshot {
+            margin: 44px auto 12px;
+            p {
+                font-size: 12px;
+                margin: 4px 0 12px 16px;
+                color: $black;
+            }
+            a {
+                color: $blue;
+            }
+        }
+        img {
+            width: 100%;
+            max-width: 100%;
+            //box-shadow: 0px 0px 12px 6px rgba(#111, 0.24);
+            //border-radius: 4px;
+            cursor: pointer;
+            padding: 10px;
+            border: 6px solid $white;
+            transition: all 260ms ease-in-out;
+            &:hover {
+                background: $white;
+            }
+        }
+    }
+}
 

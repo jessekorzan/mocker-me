@@ -1,8 +1,8 @@
 {
-    "name": "React Demo",
+    "name": "Obfusc8'r",
     "version": "0.0.1",
     "manifest_version": 2,
-    "description": "React Chrome Extension",
+    "description": "Obfuscate web text for your screen captures",
     "homepage_url": "http://emptycan.com",
     "icons": { 
         "16": "icon16.png",
@@ -20,12 +20,26 @@
             "19": "icon19.png",
             "38": "icon38.png"
         },
-        "default_title": "React Chrome Extension"
+        "default_title": "Obfusc8'r"
     },
+    "web_accessible_resources": [
+        "fonts/*.woff2", "fonts/*.woff"
+    ],
+    "content_security_policy": "script-src 'self' 'sha256-mKEAY4tgHZ2S1JemkkeEFkxGLR0502lQJEGhvmgnZAo='; object-src 'self'",
     "permissions": [
         "http://*/",
         "https://*/",
+        "<all_urls>",
         "activeTab",
+        "tabs",
         "storage"
-    ]
+    ],
+    "content_scripts": [
+    {
+      "matches": ["http://*/*"],
+      "js": ["tab.js"],
+      "run_at": "document_end",
+      "all_frames": true
+    }
+  ]
 }
